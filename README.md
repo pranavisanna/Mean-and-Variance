@@ -48,43 +48,33 @@ It shows the distance of a random variable from its mean. It is calcualted as
 ![image](https://user-images.githubusercontent.com/103921593/229993174-5b67e57e-3e01-4ac4-9f83-410a932b22bf.png)
 
 # Program :
-
-NAME: PRANAVI S REGISTER NO.: 212225040311
 ```
 import numpy as np
-L = [int(i) for i in input("Enter arrival data: ").split()]
-N = len(L)
-M = max(L)
-X = []
-f = []
-for i in range(M + 1):
-    c = 0
-    for j in range(N):
-        if L[j] == i:
-            c += 1
-    f.append(c)
-    X.append(i)
-sf = np.sum(f)
-p = [f[i] / sf for i in range(M + 1)]
-mean = np.inner(X, p)
-EX2 = np.inner(np.square(X), p)
-var = EX2 - mean**2
-SD = np.sqrt(var)
-print("\nX\tp(x)")
-for i in range(M + 1):
-    if f[i] > 0:   
-        print(f"{X[i]}\t{p[i]:.3f}")
-print(f"\nThe Mean arrival rate is {mean:.3f}")
-print(f"The Variance of arrival from feeder is {var:.3f}")
-print(f"The Standard deviation of arrival from feeder is {SD:.3f}")
+from math import sqrt
+n = int(input("Enter the value of n : "))
+print("Value of n =", n)
+InputVal = {}
+for i in range(1, n + 1):
+    val = int(input(f"{i} : "))
+    try:
+        InputVal[val] += 1
+    except:
+        InputVal[val] = 1
+mean = 0
+for key, val in InputVal.items():
+    mean += key * (val / n)
+print(f"Mean = {mean:.3f}")
+ex2 = 0
+for key, val in InputVal.items():
+    ex2 += ((key ** 2) * val / n)
+var = ex2 - mean ** 2
+print(f"Variance : {var:.3f}")
+sdtDeviation = sqrt(var)
+print(f"Standard Deviation = {sdtDeviation:.3f}")
 ```
 
-
-
 # Output : 
-
-
-<img width="792" height="305" alt="image" src="https://github.com/user-attachments/assets/136d2e49-4dd3-40cc-a481-3b18ed59d638" />
+<img width="596" height="345" alt="image" src="https://github.com/user-attachments/assets/ffaf9012-9778-460b-b121-2a548591ee88" />
 
 
 # Results :
